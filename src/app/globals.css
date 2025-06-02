@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --color-primary: 94 92 230;
+    --color-secondary: 111 114 185;
+    --color-accent: 130 71 229;
+    --color-background: 244 247 254;
+    --color-card: 255 255 255;
+    --color-text: 30 41 59;
+    --color-text-secondary: 100 116 139;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-[rgb(var(--color-background))] text-[rgb(var(--color-text))] min-h-screen font-['Inter',sans-serif];
+  }
+
+  ::selection {
+    @apply bg-[rgb(var(--color-accent))] text-white;
+  }
+}
+
+@layer components {
+  /* Boutons */
+  .btn {
+    @apply inline-flex items-center justify-center text-sm font-medium tracking-wide px-5 py-2.5 rounded-xl transition-all duration-300 shadow-sm;
+  }
+
+  .btn-primary {
+    @apply bg-[rgb(var(--color-primary))] text-white hover:bg-[rgb(var(--color-primary))/90] hover:shadow-md hover:shadow-[rgb(var(--color-primary))/20] active:translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply bg-[rgb(var(--color-secondary))/10] text-[rgb(var(--color-secondary))] hover:bg-[rgb(var(--color-secondary))/15] hover:shadow-sm;
+  }
+
+  .btn-outline {
+    @apply border border-gray-200 bg-white/80 backdrop-blur-sm text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-primary))/30] hover:bg-[rgb(var(--color-primary))/5] hover:text-[rgb(var(--color-primary))];
+  }
+
+  /* Cartes */
+  .card {
+    @apply bg-[rgb(var(--color-card))] rounded-2xl shadow-sm shadow-black/5 backdrop-blur-sm border border-white/20 p-6 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:shadow-md hover:shadow-[rgb(var(--color-primary))/10] hover:translate-y-[-2px];
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-[rgb(var(--color-primary))/10] text-[rgb(var(--color-primary))];
+  }
+
+  .badge-success {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full px-4 py-2.5 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-[rgb(var(--color-primary))/30] focus:border-[rgb(var(--color-primary))] focus:outline-none transition-all duration-200;
+  }
+}
+
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .card {
+    @apply rounded-none shadow-none border-x-0 p-5 mx-0;
+  }
+  
+  .btn {
+    @apply px-4 py-2;
+  }
+  
+  /* Suppression des marges et bordures pour les conteneurs principaux */
+  body {
+    @apply overflow-x-hidden;
+  }
+  
+  main {
+    @apply px-0 !important;
+  }
+  
+  /* Pages optimisées pour mobile */
+  .mobile-full-width {
+    @apply -mx-4 sm:mx-0 rounded-none sm:rounded-2xl;
+  }
+  
+  /* Amélioration des messages */
+  .message-item {
+    @apply rounded-2xl !important;
+  }
+}
+
+/* Animation plus fluide pour les messages */
+.message-item {
+  @apply transition-all duration-300 hover:scale-[1.01] hover:shadow-md;
+}
+
+/* Style futuriste pour les messages */
+.message-bubble {
+  @apply relative rounded-2xl p-5 overflow-hidden;
+}
+
+.message-bubble::before {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent to-white/10 opacity-50 pointer-events-none;
+}
+
+.message-bubble.unread::after {
+  content: '';
+  @apply absolute top-2 right-2 w-2 h-2 rounded-full bg-[rgb(var(--color-primary))] shadow-[0_0_10px_rgba(var(--color-primary),0.5)];
+}
+
+.message-metadata {
+  @apply flex items-center mt-3 opacity-70;
+}
+
+/* Effet de glassmorphisme */
+.glass-effect {
+  @apply backdrop-blur-sm bg-white/80 dark:bg-black/20 border border-white/40 dark:border-white/10;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Style NGL-like pour les messages */
+.ngl-message {
+  @apply relative rounded-[28px] p-0 overflow-hidden mb-6 transition-all duration-300 hover:shadow-xl shadow-md shadow-black/5;
+}
+
+.ngl-message-inner {
+  @apply p-5 sm:p-6 bg-white rounded-[28px] overflow-hidden;
+}
+
+.ngl-message-content {
+  @apply text-lg sm:text-xl font-medium leading-relaxed text-gray-800 mb-5 py-1;
+}
+
+.ngl-message-time {
+  @apply flex items-center text-xs text-gray-400 font-medium;
+}
+
+.ngl-message-badge {
+  @apply absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 z-10;
+}
+
+/* Dégradés de fond pour les messages */
+.bg-message-1 {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0ff 100%);
+}
+
+.bg-message-2 {
+  background: linear-gradient(135deg, #ffffff 0%, #fff0f0 100%);
+}
+
+.bg-message-3 {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fff0 100%);
+}
+
+.bg-message-4 {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+}
+
+.bg-message-new {
+  background: linear-gradient(135deg, #f5f5ff 0%, #e8e8ff 100%);
+}
+
+/* Effet Glassmorphisme amélioré */
+.glass-effect-modern {
+  @apply backdrop-blur-lg bg-white/90 dark:bg-black/20 border border-white/30 dark:border-white/10;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .ngl-message {
+    @apply rounded-[20px] shadow-none mb-4;
+  }
+  
+  .ngl-message-inner {
+    @apply p-4 rounded-[20px];
+  }
+  
+  .ngl-message-content {
+    @apply text-base sm:text-lg;
+  }
+}
+
+/* Améliorations pour les messages dans le style NGL */
+.message-container {
+  @apply px-1 sm:px-4 py-2 max-w-3xl mx-auto;
+}
+
+/* Animation plus élégante pour les messages */
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+

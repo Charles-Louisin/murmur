@@ -1,0 +1,14 @@
+je veux créer une application qui permet d'envoyer des messages anonymes
+le destinaire ne doit pas savoir qui a envoyé le message qu'il a recu.
+chaque utilisateur recois un lien à l'inscription qu'il peut partager pour qu'on vienne dans son compte lui laissr des message.
+pour envoyer des messages il n'est pas obligatoire d'etre connecté, mais pour en recevoir il faut s'inscrire.
+l'inscription est tres simple, pas de verification de email et tout, juste il va entrer son nom d'utilisateur et le systeme va checker si ce nom existe deja dans la base de données, c'est tout;
+apres quoi celui ci pourra recevoir son lien et acceder à son compte où il pourra voir ses messages recu aussi.
+le design doit etre simple mais tres moderne et stylé avec de superbe effet et couleur, et fonctionnalités accrocheuse.
+le frontend: next js, tailwind css,
+backend: express js (le backend sera dans un nouveau dossier que tu vas créer à la racine du projet appelé "backend")
+base de données: mongoDB
+le nom de l'app c'est : Murmur
+la couleur phare sera un bleu clair pour l'instant, par la suite on ajoutera le choix de plusieurs couleurs.
+
+NB: l'application sera plus sous mobile donc concentre toi plus sur l'affichage mobile.
